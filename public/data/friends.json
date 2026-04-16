@@ -64,7 +64,7 @@
     "image": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop"
   },
   {
-    "id": 10,
+    "id": 9,
     "name": "Sarah Connor",
     "lastContact": "90d ago",
     "category": "WORK",
@@ -72,67 +72,11 @@
     "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop"
   },
   {
-    "id": 11,
+    "id": 10,
     "name": "Arthur Morgan",
     "lastContact": "4d ago",
     "category": "FAMILY",
     "status": "On-Track",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 14,
-    "name": "Emma Watson",
-    "lastContact": "55d ago",
-    "category": "FAMILY",
-    "status": "Overdue",
-    "image": "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 15,
-    "name": "Bruce Wayne",
-    "lastContact": "3d ago",
-    "category": "HOBBY",
-    "status": "On-Track",
-    "image": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 16,
-    "name": "Diana Prince",
-    "lastContact": "22d ago",
-    "category": "WORK",
-    "status": "Almost Due",
-    "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 17,
-    "name": "Tony Stark",
-    "lastContact": "40d ago",
-    "category": "FAMILY",
-    "status": "Overdue",
-    "image": "https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 18,
-    "name": "Natasha Romanov",
-    "lastContact": "6d ago",
-    "category": "HOBBY",
-    "status": "On-Track",
-    "image": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 19,
-    "name": "Peter Parker",
-    "lastContact": "14d ago",
-    "category": "WORK",
-    "status": "Almost Due",
-    "image": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150&h=150&fit=crop"
-  },
-  {
-    "id": 20,
-    "name": "Wanda Maximoff",
-    "lastContact": "75d ago",
-    "category": "FAMILY",
-    "status": "Overdue",
-    "image": "https://images.unsplash.com/photo-1557053910-d9eadeed1c58?w=150&h=150&fit=crop"
   }
 ]
