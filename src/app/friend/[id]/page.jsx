@@ -19,6 +19,11 @@ export default function FriendDetails() {
         const found = data.find((f) => f.id === parseInt(id));
         setFriend(found);
       });
+
+    const savedTimeline = localStorage.getItem(`timeline_${id}`);
+    if (savedTimeline) {
+      setTimeline(JSON.parse(savedTimeline));
+    }
   }, [id]);
 
   const handleInteraction = (type) => {
@@ -31,9 +36,13 @@ export default function FriendDetails() {
       title: `${type} with ${friend.name}`,
     };
 
-    setTimeline([newEntry, ...timeline]);
+    const updatedTimeline = [newEntry, ...timeline];
+    setTimeline(updatedTimeline);
 
-    toast.success(`${type} entry recorded!`, {});
+    // Browser-er LocalStorage-e permanent save koro
+    localStorage.setItem(`timeline_${id}`, JSON.stringify(updatedTimeline));
+
+    toast.success(`${type} recorded!`);
   };
 
   return (
