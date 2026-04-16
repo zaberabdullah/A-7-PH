@@ -5,10 +5,12 @@ import { FiVideo } from "react-icons/fi";
 import { MdOutlineTextsms } from "react-icons/md";
 import { RiArchiveLine, RiDeleteBinLine, RiNotificationSnoozeLine } from "react-icons/ri";
 import { TbPhoneCall } from "react-icons/tb";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function FriendDetails() {
   const { id } = useParams();
-  const [friend, setFriend] = useState(null);
+  const [friend, setFriend] = useState([]);
+  const [timeline, setTimeline] = useState([]);
 
   useEffect(() => {
     fetch("/data/friends.json")
@@ -19,10 +21,25 @@ export default function FriendDetails() {
       });
   }, [id]);
 
-  if (!friend) return <div className="p-20 text-center">loading.......</div>;
+  const handleInteraction = (type) => {
+    const newEntry = {
+      date: new Date().toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+      title: `${type} with ${friend.name}`,
+    };
+
+    setTimeline([newEntry, ...timeline]);
+
+    toast.success(`${type} entry recorded!`, {});
+  };
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-12 px-4 flex justify-center items-start">
+      <ToastContainer></ToastContainer>
+
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 gap-6">
         <div className="md:col-span-4 flex flex-col gap-4">
           <div className="bg-white rounded-xl shadow-sm p-8 text-center border border-gray-100">
@@ -66,15 +83,11 @@ export default function FriendDetails() {
           </div>
         </div>
 
-      
         <div className="md:col-span-8 flex flex-col gap-6">
-      
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
               <p className="text-4xl font-bold text-[#244D3F]">62</p>
-              <p className="text-[#64748B] mt-2 font-semibold">
-                Days Since Contact
-              </p>
+              <p className="text-[#64748B] mt-2 font-semibold">Days Since Contact</p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center">
               <p className="text-4xl font-bold text-[#244D3F]">30</p>
@@ -86,7 +99,6 @@ export default function FriendDetails() {
             </div>
           </div>
 
-         
           <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative">
             <button className="absolute right-8 top-8 px-4 py-1 bg-gray-50 border border-gray-200 font-medium text-[14px] text-[#1F2937] rounded hover:bg-gray-50 transition-all">
               Edit
@@ -97,33 +109,59 @@ export default function FriendDetails() {
             </p>
           </div>
 
-          
-          <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-            <h3 className="text-lg font-bold text-[#244D3F] mb-5">Quick Check-In</h3>
-            <div className="grid grid-cols-3 gap-4 ">
-              <a
-                href={`tel:${friend.phone}`}
-                className="bg-gray-200 p-5 rounded-xl flex flex-col items-center justify-center hover:bg-slate-100 transition-all group"
-              >
-                <span className="text-2xl mb-2 text-black"><TbPhoneCall /></span>
-                <span className="text-xl text-[#1F2937]">Call</span>
-              </a>
-              <a
-                href={`mailto:${friend.email}`}
-                className="bg-gray-200 p-5 rounded-xl flex flex-col items-center justify-center hover:bg-slate-100 transition-all group"
-              >
-                <span className="text-2xl mb-2 text-black"><MdOutlineTextsms />
-</span>
-                <span className="text-xl text-[#1F2937]">Text</span>
-              </a>
-              <a
-                href="https://meet.google.com"
-                target="_blank"
-                className="bg-gray-200 p-5 rounded-xl flex flex-col items-center justify-center hover:bg-slate-100 transition-all group"
-              >
-                <span className="text-2xl mb-2 text-black"><FiVideo /></span>
-                <span className="text-xl text-[#1F2937]">Video</span>
-              </a>
+          <div className="md:col-span-8 space-y-6">
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="text-lg font-bold text-[#244D3F] mb-5">Quick Check-In</h3>
+              <div className="grid grid-cols-3 gap-4">
+                <button
+                  onClick={() => handleInteraction("Call")}
+                  className="bg-[#f8fafc] p-10 rounded-2xl flex flex-col items-center hover:bg-slate-100 transition-all group"
+                >
+                  <span className="text-2xl mb-2 text-black">
+                    <TbPhoneCall />
+                  </span>
+                  <span className="text-xl text-[#1F2937]">Call</span>
+                </button>
+                <button
+                  onClick={() => handleInteraction("Text")}
+                  className="bg-[#f8fafc] p-10 rounded-2xl flex flex-col items-center hover:bg-slate-100 transition-all group"
+                >
+                  <span className="text-2xl mb-2 text-black">
+                    <MdOutlineTextsms />
+                  </span>
+                  <span className="text-xl text-[#1F2937]">Text</span>
+                </button>
+                <button
+                  onClick={() => handleInteraction("Video")}
+                  className="bg-[#f8fafc] p-10 rounded-2xl flex flex-col items-center hover:bg-slate-100 transition-all group"
+                >
+                  <span className="text-2xl mb-2 text-black">
+                    <FiVideo />
+                  </span>
+                  <span className="text-xl text-[#1F2937]">Video</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+              <h3 className="text-lg font-bold text-slate-800 mb-6">Interaction Timeline</h3>
+              <div className="space-y-3">
+                {timeline.length === 0 ? (
+                  <div className="text-center py-10 border-2 border-dashed border-slate-500 rounded-xl">
+                    <p className="text-black">No interactions logged today.</p>
+                  </div>
+                ) : (
+                  timeline.map((entry, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center p-4 bg-slate-50 border-l-4 border-emerald-600 rounded-r-lg shadow-sm"
+                    >
+                      <span className="font-medium text-black">{entry.title}</span>
+                      <span className=" text-black">{entry.date}</span>
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
           </div>
         </div>
