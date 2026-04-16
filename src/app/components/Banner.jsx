@@ -10,7 +10,7 @@ const Banner = () => {
         </p>
 
         <button
-          className="bg-[#244D3F] text-white px-6 py-3.5 rounded-xl font-bold flex items-center gap-2 mx-auto mb-20 transition-all 
+          className="bg-[#244D3F] text-white px-4 py-3 rounded-xl font-semibold flex items-center gap-1 mx-auto mb-20 transition-all 
   duration-200 
   ease-in-out
   
@@ -26,22 +26,22 @@ const Banner = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
           <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-xl text-center">
-            <h3 className="text-3xl font-black text-[#244D3F]">10</h3>
+            <h3 className="text-3xl font-semibold text-[#244D3F]">10</h3>
             <p className="text-[18px] text-[#64748B]">Total Friends</p>
           </div>
 
           <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-xl text-center">
-            <h3 className="text-3xl font-black text-[#244D3F]">3</h3>
+            <h3 className="text-3xl font-semibold text-[#244D3F]">3</h3>
             <p className="text-[18px] text-[#64748B]">On Track</p>
           </div>
 
           <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-xl text-center">
-            <h3 className="text-3xl font-black text-[#244D3F]">6</h3>
+            <h3 className="text-3xl font-semibold text-[#244D3F]">6</h3>
             <p className="text-[18px] text-[#64748B]">Need Attention</p>
           </div>
 
           <div className="bg-white border border-gray-100 shadow-sm p-8 rounded-xl text-center">
-            <h3 className="text-3xl font-black text-[#244D3F]">12</h3>
+            <h3 className="text-3xl font-semibold text-[#244D3F]">12</h3>
             <p className="text-[18px] text-[#64748B]">Interactions</p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
-import Link from 'next/link';
-import { BarChart3, Clock, Home} from "lucide-react";
+import Link from "next/link";
+import { BarChart3, Clock, Home } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
         <span className="font-extrabold">Keen</span>Keeper
       </div>
 
-      <div className='flex items-center gap-2 md:gap-4'>
+      <div className="flex items-center gap-2 md:gap-4">
         {navLinks.map((link) => {
           const isActive = pathName === link.href;
           return (
@@ -25,9 +25,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                isActive
-                  ? "bg-[#244D3F] text-white shadow-md"
-                  : "text-gray-500 hover:text-[#244D3F] hover:bg-gray-50"
+                isActive ? "bg-[#244D3F] text-white shadow-md" : "text-gray-500 hover:text-[#244D3F] hover:bg-gray-50"
               }`}
             >
               {link.icon}
