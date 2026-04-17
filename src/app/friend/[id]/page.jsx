@@ -11,20 +11,36 @@ export default function FriendDetails() {
   const { id } = useParams();
   const [friend, setFriend] = useState([]);
   const [timeline, setTimeline] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     fetch("/data/friends.json")
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((f) => f.id === parseInt(id));
         setFriend(found);
+        
       });
 
     const savedTimeline = localStorage.getItem(`timeline_${id}`);
     if (savedTimeline) {
       setTimeline(JSON.parse(savedTimeline));
     }
+    setLoading(false);
   }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#f8fafc]">
+        <div className="w-10 h-10 border-4 border-[#244D3F] border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-[#244D3F] font-semibold animate-pulse text-lg">
+          Loading friend details...
+        </p>
+      </div>
+    );
+  }
+ 
 
   const handleInteraction = (type) => {
     const newEntry = {
