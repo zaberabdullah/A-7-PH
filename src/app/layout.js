@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
 
         <footer className="bg-[#244D3F] text-white py-10">
           <div className="max-w-7xl mx-auto px-6 text-center">
-            <h2 className="text-6xl font-bold mb-4">KeenKeeper</h2>
+            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold mb-4">KeenKeeper</h2>
 
             <p className="text-white text-[16px] mx-auto mb-10 font-medium">
               Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter
